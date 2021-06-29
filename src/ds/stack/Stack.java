@@ -2,13 +2,13 @@ package ds.stack;
 
 public class Stack {
     private int maxSize;
-    private long[] stack_array;
+    private long[] stackArray;
     private int top;
 
     public Stack(int size) {
         this.maxSize = size;
         this.top = -1;
-        stack_array = new long[size];
+        stackArray = new long[size];
     }
 
     //push
@@ -17,7 +17,7 @@ public class Stack {
             throw new Exception("The stack is full!");
         } else {
             top++;
-            stack_array[top] = num;
+            stackArray[top] = num;
         }
     }
 
@@ -28,12 +28,12 @@ public class Stack {
         }
         int old_top = top;
         top--;
-        return stack_array[old_top];
+        return stackArray[old_top];
     }
 
     //peak
     public long peak() {
-        return stack_array[top];
+        return stackArray[top];
     }
 
     //isEmpty
