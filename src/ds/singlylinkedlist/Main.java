@@ -1,4 +1,4 @@
-package ds.singlyLinkedList;
+package ds.singlylinkedlist;
 
 public class Main {
     public static void main(String[] args){

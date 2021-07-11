@@ -1,6 +1,6 @@
-package ds.linkedList;
+package ds.linkedlist;
 
-import ds.singlyLinkedList.Node;
+import ds.singlylinkedlist.Node;
 
 public class Main {
     public static void main(String[] args){

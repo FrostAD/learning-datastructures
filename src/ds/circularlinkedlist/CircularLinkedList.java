@@ -1,4 +1,4 @@
-package ds.circularLinkedList;
+package ds.circularlinkedlist;
 
 public class CircularLinkedList {
     private Node head;

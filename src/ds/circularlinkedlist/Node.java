@@ -1,4 +1,4 @@
-package ds.singlyLinkedList;
+package ds.circularlinkedlist;
 
 public class Node {
     private int value;
