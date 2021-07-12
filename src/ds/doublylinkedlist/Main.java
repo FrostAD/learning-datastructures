@@ -3,6 +3,7 @@ package ds.doublylinkedlist;
 public class Main {
     public static void main(String[] args){
         DoublyLinkedList dll = new DoublyLinkedList();
+
         dll.insertFirst(2);
         dll.insertFirst(1);
         dll.insertLast(3);
@@ -16,6 +17,9 @@ public class Main {
 
         dll.insertAfter(2,11);
 
+        dll.deleteKey(1);
+
         dll.displayList();
+        dll.displayListReversed();
     }
 }

@@ -70,29 +70,67 @@ public class DoublyLinkedList {
     public boolean insertAfter(int key, int data) {
         if (!isEmpty()) {
             Node tmp = first;
-            while (tmp != null && tmp.getValue() != key) {
+            while (tmp.getValue() != key) {
                 tmp = tmp.getNext();
+                if (tmp == null)
+                    return false;
             }
             Node newNode = new Node(data);
 
+            if (tmp.getNext() == null) {
+                last = newNode;
+            }
             newNode.setNext(tmp.getNext()); //tmp.getNext() == null ? null:tmp.getNext()
             newNode.setPrevious(tmp);
             tmp.setNext(newNode);
-            if(newNode.getNext() != null){
+            if (newNode.getNext() != null) {
                 newNode.getNext().setPrevious(newNode);
             }
             return true;
+
         } else {
             return false;
         }
     }
 
+    public Node deleteKey(int key) {
+        if (!isEmpty()) {
+            Node tmp = first;
+            while (tmp.getValue() != key) {
+                tmp = tmp.getNext();
+                if (tmp == null)
+                    return null;
+            }
+            if (tmp.getPrevious() != null) {
+                tmp.getPrevious().setNext(tmp.getNext());
+            }else {
+                first = tmp.getNext();
+            }
+            if (tmp.getNext() != null) {
+                tmp.getNext().setPrevious(tmp.getPrevious());
+            }else{
+                last = tmp.getPrevious();
+            }
+            return tmp;
+        } else
+            return null;
+    }
+
     public void displayList() {
         Node tmp = first;
         while (tmp != null) {
-            System.out.println(tmp.getValue());
+            System.out.print(tmp.getValue() + " ");
             tmp = tmp.getNext();
         }
+        System.out.println();
+    }
+    public void displayListReversed() {
+        Node tmp = last;
+        while (tmp != null) {
+            System.out.print(tmp.getValue() + " ");
+            tmp = tmp.getPrevious();
+        }
+        System.out.println();
     }
 
     public boolean isEmpty() {
