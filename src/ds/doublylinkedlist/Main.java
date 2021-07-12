@@ -12,6 +12,9 @@ public class Main {
         dll.deleteFirst();
         dll.deleteLast();
         dll.insertFirst(1);
+        dll.insertLast(3);
+
+        dll.insertAfter(2,11);
 
         dll.displayList();
     }

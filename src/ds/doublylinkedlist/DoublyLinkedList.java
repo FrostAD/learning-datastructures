@@ -30,61 +30,62 @@ public class DoublyLinkedList {
             last.setNext(node);
             node.setPrevious(last);
         }
-            last = node;
+        last = node;
     }
 
-    public Node deleteFirst(){
-        if(!isEmpty()){
+    public Node deleteFirst() {
+        if (!isEmpty()) {
             Node deleted = first;
             first = deleted.getNext();
-            if(deleted.getNext() != null){//check if there is a node after the first one
+            if (deleted.getNext() != null) {//check if there is a node after the first one
 //                deleted.getNext().setPrevious(null); //shorter
                 Node nextAfterDeleted = deleted.getNext();
                 nextAfterDeleted.setPrevious(null);
-            }else {
+            } else {
                 last = null;
             }
             return deleted;
-        }else{
+        } else {
             return null;
         }
     }
-    public Node deleteLast(){
-        if(!isEmpty()){
+
+    public Node deleteLast() {
+        if (!isEmpty()) {
             Node deleted = last;
-            if(deleted.getPrevious() == null){//check if there is only one node
+            if (deleted.getPrevious() == null) {//check if there is only one node
                 first = null;
-            }else{
+            } else {
 //                deleted.getPrevious().setNext(null); //shorter
                 Node beforeLast = deleted.getPrevious();
                 beforeLast.setNext(null);
             }
-                last = deleted.getPrevious();
+            last = deleted.getPrevious();
             return deleted;
-        }else{
+        } else {
             return null;
         }
     }
 
-//    public boolean insertAfter(int key,int data){
-//        if (!isEmpty()){
-//            Node tmp = first;
-//            while (tmp != null && tmp.getValue() == key){
-//                tmp = tmp.getNext();
-//            }
-//            Node newNode = new Node(data);
-//            if (tmp.getNext() != null){   //check if it is last
-//                tmp.getNext().setPrevious(newNode);
-//            }
-//
-//                newNode.setNext(tmp.getNext());
-//            newNode.setPrevious(tmp);
-//            tmp.setNext(newNode);
-//            return true;
-//        }else{
-//            return false;
-//        }
-//    }
+    public boolean insertAfter(int key, int data) {
+        if (!isEmpty()) {
+            Node tmp = first;
+            while (tmp != null && tmp.getValue() != key) {
+                tmp = tmp.getNext();
+            }
+            Node newNode = new Node(data);
+
+            newNode.setNext(tmp.getNext()); //tmp.getNext() == null ? null:tmp.getNext()
+            newNode.setPrevious(tmp);
+            tmp.setNext(newNode);
+            if(newNode.getNext() != null){
+                newNode.getNext().setPrevious(newNode);
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public void displayList() {
         Node tmp = first;
