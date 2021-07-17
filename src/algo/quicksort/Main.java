@@ -28,7 +28,7 @@ public class Main {
                 A[i] = tmp;
             }
         }
-        int tmp = A[j + 1];
+        int tmp = A[j + 1];//j is the last smaller value => we set the pivot to j + 1
         A[j + 1] = A[end];
         A[end] = tmp;
         return j + 1;
