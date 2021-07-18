@@ -9,7 +9,7 @@ public class Main {
         myGraph.print();
         System.out.println("\n\n\n");
 
-        CustomGraph customGraph = new CustomGraph(3);
+        CustomGraph customGraph = new CustomGraph(3,false);
 
         customGraph.addVertex(1);
         customGraph.addVertex(2);

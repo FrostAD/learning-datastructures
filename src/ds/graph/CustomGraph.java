@@ -6,12 +6,14 @@ public class CustomGraph {
     private int edgesCount;
     private int verIndex;
     private Vertex[] vertices;
+    private boolean directed;
 
-    public CustomGraph(int verticesCount) {
+    public CustomGraph(int verticesCount,boolean directed) {
         this.verticesCount = verticesCount;
         edgesCount = 0;
         verIndex = 0;
         vertices = new Vertex[verticesCount];
+        this.directed = directed;
     }
 
     public void addVertex(int value) {
@@ -22,7 +24,13 @@ public class CustomGraph {
     public void addEdge(int start,int end){
         int vertexIndex = getIndex(start);
         if (vertexIndex != -1){
-            vertices[vertexIndex].getEdges().insertLast(end);
+            if(directed)
+                vertices[vertexIndex].getEdges().insertLast(end);
+            else{
+                int vertexIndexEnd = getIndex(end);
+                vertices[vertexIndex].getEdges().insertLast(end);
+                vertices[vertexIndexEnd].getEdges().insertLast(start);
+            }
         }
     }
     public int getIndex(int value){
