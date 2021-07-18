@@ -40,8 +40,9 @@ public class SinglyLinkedList {
     public void displayList() {
         Node tmp = head;
         while (tmp != null) {
-            System.out.println(tmp.getValue());
+            System.out.print(tmp.getValue() + " ");
             tmp = tmp.getNext();
         }
+        System.out.println();
     }
 }
