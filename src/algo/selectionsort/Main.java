@@ -4,13 +4,10 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args){
-        int[] a = {99,5,11,75,22,4,17,77,23,99,10};
-        int[] c = {99,5,11,75,22,4,99};
-        int[] b = selectionSort(a);
+        int[] a = {20,35,-15,7,55,1,-22};
 
-        for (int i = 0; i < b.length; i++) {
-            System.out.print(b[i] + " ");
-        }
+        selectionSort2(a);
+        printArray(a);
     }
 
     public static int[] selectionSort(int[] array){
@@ -26,5 +23,22 @@ public class Main {
             array[minIndex] = tmp;
         }
         return array;
+    }
+    public static void selectionSort2(int[] arr){
+        for (int i = arr.length - 1; i > 0 ; i--) {
+        int largestIndex = 0;
+            for (int j = 1; j <= i; j++) {
+                if (arr[largestIndex] < arr[j])
+                    largestIndex = j;
+            }
+            int tmp = arr[largestIndex];
+            arr[largestIndex] = arr[i];
+            arr[i] = tmp;
+        }
+    }
+    public static void printArray(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
     }
 }
