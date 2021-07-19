@@ -25,15 +25,15 @@ public class Main {
         return array;
     }
     public static void selectionSort2(int[] arr){
-        for (int i = arr.length - 1; i > 0 ; i--) {
+        for (int unsortedIndex = arr.length - 1; unsortedIndex > 0 ; unsortedIndex--) {
         int largestIndex = 0;
-            for (int j = 1; j <= i; j++) {
+            for (int j = 1; j <= unsortedIndex; j++) {
                 if (arr[largestIndex] < arr[j])
                     largestIndex = j;
             }
             int tmp = arr[largestIndex];
-            arr[largestIndex] = arr[i];
-            arr[i] = tmp;
+            arr[largestIndex] = arr[unsortedIndex];
+            arr[unsortedIndex] = tmp;
         }
     }
     public static void printArray(int[] arr) {

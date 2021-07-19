@@ -2,13 +2,10 @@ package algo.insertionsort;
 
 public class Main {
     public static void main(String[] args) {
-        int[] a = {99, 5, 11, 75, 22, 4, 17, 77, 23, 99, 10};
-        int[] b = {2, 4, 3, 1};
-        int[] c = insertionSort(a);
+        int[] a = {20,35,-15,7,55,1,-22};
 
-        for (int i = 0; i < c.length; i++) {
-            System.out.print(c[i] + " ");
-        }
+        insertionSort2(a);
+        printArray(a);
     }
 
     public static int[] insertionSort(int[] arr) {
@@ -22,5 +19,21 @@ public class Main {
             arr[j+1] = tmp;
         }
         return arr;
+    }
+    public static void insertionSort2(int[] arr){
+        for (int i = 1; i < arr.length; i++) {
+            int element = arr[i];
+            int j = i-1;
+            while (j >= 0 && arr[j] > element){
+                arr[j+1] = arr[j];
+                j--;
+            }
+            arr[j+1] = element;
+        }
+    }
+    public static void printArray(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
     }
 }
