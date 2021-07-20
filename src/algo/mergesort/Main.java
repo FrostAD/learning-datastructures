@@ -2,9 +2,9 @@ package algo.mergesort;
 
 public class Main {
     public static void main(String[] args) {
-        int[] a = {99, 5, 11, 75, 22, 4, 17, 77, 23, 99, 10};
+        int[] a = {20,35,-15,7,55,1,-22};
 
-        mergeSort(a,0,a.length-1);
+        mergeSort2(a,0,a.length-1);
         printArray(a);
     }
 
@@ -47,6 +47,59 @@ public class Main {
             A[i] = newA[i - start];
         }
     }
+
+    public static void mergeSort2(int[] a,int start,int end){
+        if(start < end){
+            int middle = (start + end) / 2;
+            mergeSort2(a,start,middle);
+            mergeSort2(a,middle + 1,end);
+            merge2(a,start,middle,end);
+        }
+    }
+    public static void merge2(int[] a,int start,int middle, int end){
+        //Optimization
+        if (a[middle] <= a[middle +1])
+            return;
+        //
+        int i = start;
+        int j = middle + 1;
+        int[] tmp = new int[end - start + 1];
+        int tmpIndex = 0;
+
+        while (i <= middle && j <= end){
+            if (a[i] <= a[j]){
+                tmp[tmpIndex++] = a[i++];
+            }else {
+                tmp[tmpIndex++] = a[j++];
+            }
+        }
+        while (i <= middle){
+            tmp[tmpIndex++] = a[i++];
+        }
+        while (j <= end){
+            tmp[tmpIndex++] = a[j++];
+        }
+        for (int k = start; k <= end; k++) {
+            a[k] = tmp[k - start];
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public static void printArray(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i] + " ");

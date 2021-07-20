@@ -2,9 +2,10 @@ package algo.quicksort;
 
 public class Main {
     public static void main(String[] args) {
-        int[] a = {99, 5, 11, 75, 22, 4, 17, 77, 23, 99, 10};
+        int[] a = {20, 35, -15, 7, 55, 1, -22};
 
-        quickSort(a, 0, a.length - 1);
+
+        quickSort2(a, 0, a.length - 1);
         printArray(a);
     }
 
@@ -32,6 +33,34 @@ public class Main {
         A[j + 1] = A[end];
         A[end] = tmp;
         return j + 1;
+    }
+
+    public static void quickSort2(int[] a, int start, int end) {
+        if (start < end) {
+            int pivotIndex = partition2(a, start, end);
+
+            quickSort2(a, start, pivotIndex-1);
+            quickSort2(a, pivotIndex + 1, end);
+        }
+    }
+
+    public static int partition2(int[] a, int start, int end) {
+        int pivot = a[end];
+        int i = start-1;
+
+        for (int j = start; j < end; j++) {
+            if (a[j] < pivot) {
+                i++;
+                int tmp = a[i];
+                a[i] = a[j];
+                a[j] = tmp;
+            }
+        }
+        int tmp = a[i+1];
+        a[i+1] = a[end];
+        a[end] = tmp;
+
+        return i+1;
     }
 
     public static void printArray(int[] arr) {
