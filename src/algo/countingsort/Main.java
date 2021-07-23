@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args){
-     int[] a = { 2,7,1,6,3,9,9,1,3,4};
+     int[] a = { 4,2,2,8,3,3,1};
      countingSort(a);
      printArray(a);
 
@@ -20,11 +20,27 @@ public class Main {
                 minValue = a[i];
         }
 
-        int[] counter = new int[maxValue - minValue + 1];
+        int[] counter = new int[maxValue+1];
 
         for (int i = 0; i < a.length; i++) {
-            counter[a[i] - minValue]++;
+            counter[a[i]]++;
         }
+        //cumulative(stable version)
+        int[] counter2 = new int[maxValue+1];
+        for (int i = 0; i < counter.length; i++) {
+            counter2[i] = counter[i];
+        }
+        for (int i = 1; i <= maxValue; i++) {
+            counter2[i] += counter[i-1];
+        }
+        int[] output = new int[a.length];
+        for (int i = a.length - 1; i >= 0; i--) {
+            output[counter2[a[i]] - 1] = a[i];
+            counter2[a[i]]--;
+        }
+
+        //
+
         int index = 0;
         for (int i = 0; i < counter.length; i++) {
             while (counter[i] > 0){

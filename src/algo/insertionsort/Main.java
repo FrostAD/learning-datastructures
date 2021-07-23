@@ -2,9 +2,10 @@ package algo.insertionsort;
 
 public class Main {
     public static void main(String[] args) {
-        int[] a = {20,35,-15,7,55,1,-22};
+        int[] a = {20, 35, -15, 7, 55, 1, -22};
 
-        insertionSort2(a);
+//        insertionSort2(a);
+        insertionSortRecursive(a,1);
         printArray(a);
     }
 
@@ -13,24 +14,44 @@ public class Main {
             int j = i - 1;
             int tmp = arr[i];
             while (j >= 0 && tmp < arr[j]) {
-                arr[j+1] = arr[j]; //!! j+1
+                arr[j + 1] = arr[j]; //!! j+1
                 j--;
             }
-            arr[j+1] = tmp;
+            arr[j + 1] = tmp;
         }
         return arr;
     }
-    public static void insertionSort2(int[] arr){
+
+    public static void insertionSort2(int[] arr) {
         for (int i = 1; i < arr.length; i++) {
             int element = arr[i];
-            int j = i-1;
-            while (j >= 0 && arr[j] > element){
-                arr[j+1] = arr[j];
+            int j = i - 1;
+            while (j >= 0 && arr[j] > element) {
+                arr[j + 1] = arr[j];
                 j--;
             }
-            arr[j+1] = element;
+            arr[j + 1] = element;
         }
     }
+
+    public static void insertionSortRecursive(int[] arr, int i) {
+        if (i == arr.length)
+            return;
+
+
+        int element = arr[i];
+        int j = i - 1;
+        while (j >= 0 && arr[j] > element) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = element;
+        System.out.println("Call " + i);
+        printArray(arr);
+        System.out.println();
+        insertionSortRecursive(arr,i + 1);
+    }
+
     public static void printArray(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i] + " ");

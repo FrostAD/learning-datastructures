@@ -58,7 +58,7 @@ public class Main {
     }
     public static void merge2(int[] a,int start,int middle, int end){
         //Optimization
-        if (a[middle] <= a[middle +1])
+        if (a[middle] >= a[middle +1])
             return;
         //
         int i = start;
@@ -67,7 +67,7 @@ public class Main {
         int tmpIndex = 0;
 
         while (i <= middle && j <= end){
-            if (a[i] <= a[j]){
+            if (a[i] >= a[j]){
                 tmp[tmpIndex++] = a[i++];
             }else {
                 tmp[tmpIndex++] = a[j++];
