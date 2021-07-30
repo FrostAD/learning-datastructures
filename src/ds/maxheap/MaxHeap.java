@@ -46,7 +46,7 @@ public class MaxHeap {
     }
     private void fixHeapAbove(int index) {
         while (index > 0 && heap[index] > heap[getParentIndex(index)]) {
-            swap(index, getParentIndex(index));
+            swap(heap,index, getParentIndex(index));
             index = getParentIndex(index);
         }
     }
@@ -94,10 +94,23 @@ public class MaxHeap {
         }
     }
 
-    public void swap(int a, int b) {
-        int tmp = heap[a];
-        heap[a] = heap[b];
-        heap[b] = tmp;
+    public void swap(int[] arr, int a, int b) {
+        int tmp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = tmp;
+    }
+    public int[] sort(){
+        int index = size - 1;
+//        int[] heapCopy = new int[heap.length];
+//        System.arraycopy(heap,0,heapCopy,0,heap.length);
+
+        while (index > 0){
+            swap(heap,0,index);
+            index--;
+            fixHeapBelow(0,index);
+        }
+        return heap;
+
     }
 
     public boolean isFull() {
@@ -117,5 +130,11 @@ public class MaxHeap {
             return 2 * index + 1;
         else
             return 2 * index + 2;
+    }
+    public void print(){
+        for (int i = 0; i < size; i++) {
+            System.out.print(heap[i] + " ");
+        }
+        System.out.println();
     }
 }
